@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2196f3">
+    <title>Suleman Surveyors App Prototype</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/splash.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+    <div class="app-container">
+        <div class="phone-frame">
+            <!-- Splash Screen -->
+            <div id="splash-screen" class="splash-screen">
+                <img src="images/splash-screen.png" alt="Suleman Surveyors" class="splash-image">
+                <div class="loading-bar-container">
+                    <div class="loading-bar"></div>
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <div class="time">9:41</div>
+                <div class="status-icons">
+                    <div class="status-icon"></div>
+                    <div class="status-icon"></div>
+                    <div class="status-icon"></div>
+                </div>
+            </div>
+            
+            <div id="app-content">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+            
+            <div class="bottom-nav">
+                <div class="nav-item active" data-screen="home">
+                    <div class="nav-icon home-icon"></div>
+                    <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" data-screen="projects">
+                    <div class="nav-icon projects-icon"></div>
+                    <div class="nav-label">Projects</div>
+                </div>
+                <div class="nav-item" data-screen="profile">
+                    <div class="nav-icon profile-icon"></div>
+                    <div class="nav-label">Profile</div>
+                </div>
+            </div>
+            
+            <div class="home-indicator"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ai-service.js"></script>
+    <script src="js/ar-service.js"></script>
+    <script>
+        // Register service worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
